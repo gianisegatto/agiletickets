@@ -11,6 +11,8 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import br.com.caelum.agiletickets.domain.Promocao;
+
 @Entity
 public class Sessao {
 
@@ -97,5 +99,18 @@ public class Sessao {
 		boolean temEspaco = numeroDeIngressos <= this.getIngressosDisponiveis();
 	
         return temEspaco;
+	}
+	
+	public boolean dentroDoIntervalo(Promocao promocao) {
+		return getInicio().isAfter(promocao.getInicio())
+				&& getInicio().isBefore(promocao.getFim());
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		Sessao outro = (Sessao) obj;
+		
+		return this.inicio.equals(outro.getInicio());
 	}
 }
