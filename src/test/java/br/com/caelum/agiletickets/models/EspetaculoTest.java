@@ -25,8 +25,6 @@ public class EspetaculoTest {
 	public void beforeTest() {
 		
 		espetaculo = new Espetaculo();
-		List<Sessao> sessoes = obterSessoesSemanais();
-		
 	}
 	
 	@Test
